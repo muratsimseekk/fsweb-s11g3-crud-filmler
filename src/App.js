@@ -19,6 +19,7 @@ const App = (props) => {
     axios.get('http://localhost:9000/api/movies')
       .then(res => {
         setMovies(res.data);
+        // console.log('Appde get cagrisi yapildi donen deger : ' ,res.data);
       })
       .catch(err => {
         console.log(err);
@@ -45,7 +46,7 @@ const App = (props) => {
 
           <Switch>
             <Route path="/movies/edit/:id">
-              <EditMovieForm />
+              <EditMovieForm setMovies ={setMovies}/>
             </Route>
             
             <Route path="/movies/:id">
