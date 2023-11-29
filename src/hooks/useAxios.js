@@ -10,6 +10,7 @@
 
 import axios from "axios";
 import { useState } from "react"
+import { AxiosInstance } from "../AxiosInstance";
 
 export const REQ_TYPES = {
     POST: "post",

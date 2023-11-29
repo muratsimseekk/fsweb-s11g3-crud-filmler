@@ -16,6 +16,8 @@ const App = (props) => {
   const [movies, setMovies] = useState([]);
   const [favoriteMovies, setFavoriteMovies] = useState([]);
 
+ 
+
   useEffect(() => {
     axios.get('http://localhost:9000/api/movies')
       .then(res => {

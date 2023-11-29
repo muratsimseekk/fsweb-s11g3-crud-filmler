@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useState } from 'react'
 import { Link, useHistory } from 'react-router-dom/cjs/react-router-dom.min';
+import { REQ_TYPES, useAxios } from '../hooks/useAxios';
 
 function AddMovieForm(props) {
   //formdan gelecek degerler tutulacak
@@ -22,14 +23,11 @@ function AddMovieForm(props) {
   }
 
   const history = useHistory();
-
+  const [ data , reqFunction] = useAxios({requestType:REQ_TYPES.POST , endpointUrl:'http://localhost:9000/api/movies' ,payload:newMovie })
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.post('http://localhost:9000/api/movies',newMovie).then(res=>{
-      console.log('yeni movie basariyla eklendi:',res);
-      setMovies(res.data);
-      history.push('/movies')
-    }).catch(err => console.log('movie eklenirken hata olustu',newMovie,err))
+    reqFunction();
+    history.push('/')
   }
  
 
